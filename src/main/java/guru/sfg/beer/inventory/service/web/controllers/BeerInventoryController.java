@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -24,11 +23,11 @@ public class BeerInventoryController {
     private final BeerInventoryRepository beerInventoryRepository;
     private final BeerInventoryMapper beerInventoryMapper;
 
-    @GetMapping("/beer/{beerId}/inventory")
-    List<BeerInventoryDto> listBeersById(@PathVariable UUID beerId){
-        log.debug("Finding Inventory for beerId:" + beerId);
+    @GetMapping("/beer/{upc}/inventory")
+    List<BeerInventoryDto> listBeersById(@PathVariable String upc){
+        log.debug("Finding Inventory for upc: " + upc);
 
-        return beerInventoryRepository.findAllByBeerId(beerId)
+        return beerInventoryRepository.findAllByUpc(upc)
                 .stream()
                 .map(beerInventoryMapper::beerInventoryToBeerInventoryDto)
                 .collect(Collectors.toList());
