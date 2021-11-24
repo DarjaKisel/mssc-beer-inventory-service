@@ -14,7 +14,7 @@ import java.util.UUID;
  */
 @Slf4j
 @RequiredArgsConstructor
-@Component
+//@Component
 public class BeerInvntoryBootstrap implements CommandLineRunner {
     public static final long BEER_1_UPC = 17500000000038L;
     public static final long BEER_2_UPC = 98100000000038L;
